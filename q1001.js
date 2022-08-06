@@ -1,3 +1,4 @@
+import { listRandom } from "./functions.js";
 // 题目id
 export const id = 'q1001';
 // 题目
