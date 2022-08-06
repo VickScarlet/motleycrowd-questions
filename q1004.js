@@ -1,5 +1,5 @@
 // 题目id
-export const id = 'q1001';
+export const id = 'q1004';
 // 题目
 export const question = '请任意选择一项。';
 // 选项

@@ -1,5 +1,5 @@
 // 题目id
-export const id = 'q1001';
+export const id = 'q1005';
 // 题目
 export const question = '三族混战，人最多的+2分，最少的-1分。你会加入？';
 // 选项
