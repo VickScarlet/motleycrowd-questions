@@ -1,0 +1,18 @@
+// 题目
+export const question = '第六关：\n请选择一项身份。';
+// 选项 -[usually 表示常驻]
+//      -[special 表示特殊，配合 rate 使用万分率]
+export const options = {
+    A: {type: 'usually', val: '打工人（+1分，剩余价值+2）'},
+    B: {type: 'usually', val: '摸鱼人（+1分，剩余价值+1，但随机1位被优化除名）'},
+    C: {type: 'usually', val: '卷王（+2分，剩余价值+4，但随机2位过劳死除名）'},
+    D: {type: 'usually', val: '资本家（平分所有剩余价值转化为积分）'},
+    E: {type: 'usually', val: '贪官（+1分，如果比资本家少，则夺走资本家一半积分）'},
+    F: {type: 'usually', val: '反腐队长（如果贪官收入大于1，则使贪官收入清零，并且你+3分）'},
+    G: {type: 'special', val: '工人领袖（如果比资本家少，则夺走资本家剩余积分，与打工人、摸鱼人、卷王一起平分。）', rate: 500},
+};
+// 没有选的人的分数
+export const least = 0;
+
+// 判断规则
+export const judge = ({answer}) => ({});
