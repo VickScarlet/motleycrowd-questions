@@ -3,6 +3,7 @@ export const question = '第六关：\n请选择一项身份。';
 // 选项 -[usually 表示常驻]
 //      -[special 表示特殊，配合 rate 使用万分率]
 export const options = {
+    //                   score: 分数
     A: {type: 'usually', score: 1, val: '奴隶（+1分）'},
     B: {type: 'usually', score: 2, val: '骑士（如果比奴隶少，+2分）'},
     C: {type: 'usually', score: 3, val: '贵族（如果奴隶最多，+3分）'},

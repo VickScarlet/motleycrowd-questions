@@ -1,11 +1,12 @@
 // 题目
 export const question = '第二关：\n请选择一项，但人数最多的一项改为-1分。';
 const meta = {
-    most: -1,
+    most: -1, // 人数最多的分值
 }
 // 选项 -[usually 表示常驻]
 //      -[special 表示特殊，配合 rate 使用万分率]
 export const options = {
+    //                   score: 分数
     A: {type: 'usually', score: 0, val:  '0分'},
     B: {type: 'usually', score: 1, val: '+1分'},
     C: {type: 'usually', score: 2, val: '+2分'},

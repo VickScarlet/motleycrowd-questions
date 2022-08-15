@@ -2,14 +2,15 @@ import { between } from "./functions.js";
 // 题目
 export const question = '第五关：\n如果AB两项任务都成功了，则选这两项的人平分150分';
 const meta = {
-    reward: 150,
-    missions: ['A', 'B'],
-    other: 'C',
-    enemy: 'D',
+    reward: 150, // 平分总分
+    missions: ['A', 'B'], // 任务列表
+    other: 'C', // 群众
+    enemy: 'D', // 敌人
 }
 // 选项 -[usually 表示常驻]
 //      -[special 表示特殊，配合 rate 使用万分率]
 export const options = {
+    //                  between: 目标 score: 成功分数 faild: 失败分数
     A: {type: 'usually', between: [ 1,       10], val: '任务A（来1-10个人）'},
     B: {type: 'usually', between: [30, Infinity], val: '任务B（来至少30个人）'},
     C: {type: 'usually', score: 1,                val: '群众（+1分）'},

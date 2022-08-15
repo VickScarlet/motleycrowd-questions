@@ -4,6 +4,7 @@ export const question = '第六关：\n请选择一项身份。';
 // 选项 -[usually 表示常驻]
 //      -[special 表示特殊，配合 rate 使用万分率]
 export const options = {
+    //                   score: 分数 surplus: 剩余价值 exception: 除名人数 check: 检查点
     A: {type: 'usually', score: 1, surplus: 2,               val: '打工人（+1分，剩余价值+2）'},
     B: {type: 'usually', score: 1, surplus: 1, exception: 1, val: '摸鱼人（+1分，剩余价值+1，但随机1位被优化除名）'},
     C: {type: 'usually', score: 2, surplus: 4, exception: 2, val: '卷王（+2分，剩余价值+4，但随机2位过劳死除名）'},

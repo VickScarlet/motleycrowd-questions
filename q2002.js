@@ -3,6 +3,7 @@ export const question = '第二关：\n请选择一项，和选了它的人平�
 // 选项 -[usually 表示常驻]
 //      -[special 表示特殊，配合 rate 使用万分率]
 export const options = {
+    //                   score: 平分积分
     A: {type: 'usually', score: 50, val: '50分'},
     B: {type: 'usually', score: 40, val: '40分'},
     C: {type: 'usually', score: 30, val: '30分'},

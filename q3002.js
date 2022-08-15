@@ -3,6 +3,7 @@ export const question = '第三关：\n你会和其他人合作吗？';
 // 选项 -[usually 表示常驻]
 //      -[special 表示特殊，配合 rate 使用万分率]
 export const options = {
+    //                   success: 成功 faild: 失败 target: 目标
     A: {type: 'usually', success: 1,                                    val: 'A（+1分）'},
     B: {type: 'usually', success: 3, faild: -3, target: {C: 30},        val: 'B（-3分，如果至少30人选了C，改为+3分）'},
     C: {type: 'usually', success: 3, faild: -3, target: {B: 30},        val: 'C（-3分，如果至少30人选了B，改为+3分）'},

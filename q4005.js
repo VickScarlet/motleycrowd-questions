@@ -1,12 +1,13 @@
 // 题目
 export const question = '第四关：\n人数最接近选项数字的+2分，最远的-1分。';
 const meta = {
-    nearest:   2,
-    furthest: -1,
+    nearest:   2, // 最接近
+    furthest: -1, // 最远
 }
 // 选项 -[usually 表示常驻]
 //      -[special 表示特殊，配合 rate 使用万分率]
 export const options = {
+    //                              number: 目标人数
     A: {type: 'usually', val: '10', number: 10 },
     B: {type: 'usually', val: '20', number: 20 },
     C: {type: 'usually', val: '30', number: 30 },

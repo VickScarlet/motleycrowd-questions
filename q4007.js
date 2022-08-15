@@ -4,6 +4,7 @@ export const question = '第四关：\n请选择一处聚集点，人数超过�
 // 选项 -[usually 表示常驻]
 //      -[special 表示特殊，配合 rate 使用万分率]
 export const options = {
+    //                   safe: 安全范围        faild: 失败分数 extra: 额外范围 exscore: 额外分数
     A: {type: 'usually', safe: [0, 10, true, true], faild: -2,                           val: '车棚（上限10人）'},
     B: {type: 'usually', safe: [0, 20, true, true], faild: -2,                           val: '集装箱（上限20人）'},
     C: {type: 'usually', safe: [0, 30, true, true], faild: -2,                           val: '小诊所（上限30人）'},

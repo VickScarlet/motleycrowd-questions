@@ -3,6 +3,7 @@ export const question = '第五关：\n下面有四种方案分配100积分，�
 // 选项 -[usually 表示常驻]
 //      -[special 表示特殊，配合 rate 使用万分率]
 export const options = {
+    //                   scores: 分配方案
     A: {type: 'usually', scores: {A:40, B:30, C:20, D:10}, val: 'A（A40分，B30分，C20分，D10分）'},
     B: {type: 'usually', scores: {A:20, B:60,       D:20}, val: 'B（A20分，B60分，不给C，D20分）'},
     C: {type: 'usually', scores: {            C:50, D:50}, val: 'C（不给A，不给B，C50分，D50分）'},

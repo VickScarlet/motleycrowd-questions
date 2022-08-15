@@ -1,12 +1,13 @@
 // 题目
 export const question = '第二关：\n三族混战，数量最多的+2分，最少的-1分。\n你会加入哪一方？';
 const meta = {
-    most:   2,
-    least: -1,
+    most:   2,  // 人多的分值
+    least: -1,  // 人少的分值
 };
 // 选项 -[usually 表示常驻]
 //      -[special 表示特殊，配合 rate 使用万分率]
 export const options = {
+    //                   extra: 额外人数 multiple: 人数倍数 reward: 奖励倍数
     A: {type: 'usually', extra: 15, multiple: 1,   reward: 1, val: '异虫（+15人）'},
     B: {type: 'usually', extra:  0, multiple: 1.5, reward: 1, val: '星灵（每个人相当于1.5个人）'},
     C: {type: 'usually', extra:  0, multiple: 1,   reward: 2, val: '人类（得失翻倍）'},

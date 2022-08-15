@@ -3,6 +3,7 @@ export const question = '第二关：\n请选择一项，如果选A的人最多�
 // 选项 -[usually 表示常驻]
 //      -[special 表示特殊，配合 rate 使用万分率]
 export const options = {
+    //                   score: 分数
     A: {type: 'usually', score:  2, val: 'A（+2分）'},
     B: {type: 'usually', score: -2, val: 'B（-2分）'},
     C: {type: 'usually', score:  0, val: 'C（0分）'},

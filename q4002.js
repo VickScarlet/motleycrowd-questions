@@ -3,6 +3,7 @@ export const question = '第四关：\n有A、B两个山口，魏军只要一个
 // 选项 -[usually 表示常驻]
 //      -[special 表示特殊，配合 rate 使用万分率]
 export const options = {
+    //                   win: 胜利得分
     A: {type: 'usually', win: 1, val: '魏军，去A山口'},
     B: {type: 'usually', win: 1, val: '魏军，去B山口'},
     C: {type: 'usually', win: 3, val: '蜀军，去A山口'},

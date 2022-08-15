@@ -3,6 +3,7 @@ export const question = '第二关：\n如果选A的人多，所有选B的人+2�
 // 选项 -[usually 表示常驻]
 //      -[special 表示特殊，配合 rate 使用万分率]
 export const options = {
+    //                   more: 人多的分值 less: 人少的分值
     A: {type: 'usually',                    val: 'A'},
     B: {type: 'usually', more: -1, less: 2, val: 'B'},
 

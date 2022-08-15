@@ -1,11 +1,12 @@
 // 题目
 export const question = '第四关：\n从1-10中选一个数，离平均数的三分之二最近的人获胜，获得等于所选数的积分。';
 const meta = {
-    pointer: 2/3,
+    pointer: 2/3, // 中心点
 }
 // 选项 -[usually 表示常驻]
 //      -[special 表示特殊，配合 rate 使用万分率]
 export const options = {
+    //                              number: 选项的数值
     A: {type: 'usually', val: '10', number: 10},
     B: {type: 'usually', val:  '9', number:  9},
     C: {type: 'usually', val:  '8', number:  8},

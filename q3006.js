@@ -3,6 +3,7 @@ export const question = '第三关：\nA队和B队拔河，人多的一方赢。
 // 选项 -[usually 表示常驻]
 //      -[special 表示特殊，配合 rate 使用万分率]
 export const options = {
+    //                   extra: 额外人数 total: 平分总分
     A: {type: 'usually', extra:  0, total: 150, val: 'A队（如果赢了，队员平分150分'},
     B: {type: 'usually', extra: 10, total: 100, val: 'B队（人数+10，如果赢了，队员平分100分'},
 };
