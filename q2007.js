@@ -1,6 +1,10 @@
 import { mutipleForEach, fingerGuessing } from "./functions.js";
 // 题目
 export const question = '第二关：\n石头剪刀布，人数最多和最少的两项PK，\n赢的+2分，输的-2分。';
+const meta = {
+    win: 2,
+    lose: -2,
+}
 // 选项 -[usually 表示常驻]
 //      -[special 表示特殊，配合 rate 使用万分率]
 export const options = {
@@ -22,17 +26,15 @@ export const judge = ({answer}) => {
     if(!mostAns) return {};
     const scores = {};
     const addScore = (option, score)=>{
-        if(!scores[option]) {
-            scores[option] = {type: 'val', value: score};
-            return;
-        }
-        scores[option].value += score;
+        if(!scores[option])
+            scores[option] = 0;
+        scores[option] += score;
     };
 
     mutipleForEach(mostAns, leastAns)((a,b)=>{
         const pkRet = fingerGuessing(options[a].finger, options[b].finger);
-        addScore(a,  2*pkRet);
-        addScore(b, -2*pkRet);
+        addScore(a, pkRet * meta.win);
+        addScore(b, pkRet * meta.lose);
     });
     return scores;
 };

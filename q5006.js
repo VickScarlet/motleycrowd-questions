@@ -28,10 +28,10 @@ export const judge = ({answer}) => {
         const count = answer.count(opt)
         const need = take*count;
         if(need >= left) {
-            scores[opt] = {type: 'val', value: left/count};
+            scores[opt] = left/count;
             return scores;
         }
-        scores[opt] = {type: 'val', value: take};
+        scores[opt] = take;
     }
     return scores;
 }

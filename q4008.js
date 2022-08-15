@@ -22,8 +22,8 @@ export const judge = ({answer, picked}) => {
         .reduce((s, o)=>s+answer.count(o) * options[o].invest, 0)
     const reward = sum > meta.threshold ? meta.reward : 0;
     return {
-        B: {type: 'val', value: reward - options.B.invest},
-        C: {type: 'val', value: reward - options.C.invest},
-        D: {type: 'val', value: reward - options.D.invest},
+        B: reward - options.B.invest,
+        C: reward - options.C.invest,
+        D: reward - options.D.invest,
     };
 };

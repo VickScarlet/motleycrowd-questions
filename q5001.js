@@ -24,17 +24,15 @@ export const judge = ({answer, picked}) => {
 
         const {stock, score} = options[option];
         if(stock>=count) {
-            if(score)
-                scores[option] = {type: 'val', value: score};
+            if(score) scores[option] = score;
             return;
         }
 
         const users = answer.users(option);
         const success = new Set(listRandom(users, stock));
-        scores[option] = {
-            type: 'val',
-            value: ({uuid})=>success.has(uuid) ? score : meta.faild,
-        };
+        scores[option] = ({uuid})=>success.has(uuid)
+            ? score
+            : meta.faild;
     });
     return scores;
 };

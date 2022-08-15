@@ -41,8 +41,9 @@ export const judge = ({answer}) => {
         scores.G = {type: 'val', value: meta.bo}
     }
 
-    const addScore = (isQi, score)=>Array.from(isQi?'ABC':'DEF')
-        .forEach(opt=>scores[opt] = {type: 'val', value: score});
+    const addScore = (isQi, score)=>Array
+        .from(isQi?'ABC':'DEF')
+        .forEach(opt=>scores[opt] = score);
 
     // qi1 qi2 qi3 tian1 tian2 tian3
     // qi1 vs tian1, qi2 vs tian2, qi3 vs tian3

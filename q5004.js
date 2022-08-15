@@ -21,20 +21,18 @@ export const least = -2;
 // 判断规则
 export const judge = ({answer}) => {
     const {missions, reward, other, enemy} = meta;
-    const scores = {
-        [other]: {type: 'val', value: options[other].score},
-    }
+    const scores = {[other]: options[other].score};
     let total = 0;
     for(const opt of missions) {
         const count = answer.count(opt);
         total += count;
         if(between(count,...options[opt].between)) continue;
 
-        scores[enemy] = {type: 'val', value: options[enemy].score};
+        scores[enemy] = options[enemy].score;
         return scores;
     }
-    scores[enemy] = {type: 'val', value: options[enemy].faild};
-    const missionReward = {type: 'val', value: reward/total};
+    scores[enemy] = options[enemy].faild;
+    const missionReward = reward/total;
     for(const opt of missions)
         scores[opt] = missionReward;
     return scores;

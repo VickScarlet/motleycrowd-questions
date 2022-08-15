@@ -3,10 +3,10 @@ export const question = '第四关：\n有A、B两个山口，魏军只要一个
 // 选项 -[usually 表示常驻]
 //      -[special 表示特殊，配合 rate 使用万分率]
 export const options = {
-    A: {type: 'usually', val: '魏军，去A山口'},
-    B: {type: 'usually', val: '魏军，去B山口'},
-    C: {type: 'usually', val: '蜀军，去A山口'},
-    D: {type: 'usually', val: '蜀军，去B山口'},
+    A: {type: 'usually', win: 1, val: '魏军，去A山口'},
+    B: {type: 'usually', win: 1, val: '魏军，去B山口'},
+    C: {type: 'usually', win: 3, val: '蜀军，去A山口'},
+    D: {type: 'usually', win: 3, val: '蜀军，去B山口'},
 };
 // 没有选的人的分数
 export const least = 0;
@@ -18,17 +18,7 @@ export const judge = ({answer}) => {
     const c = answer.count('C');
     const d = answer.count('D');
 
-    if(a<c&&b<d)
-        return {
-            C: {type: 'val', value: 3},
-            D: {type: 'val', value: 3},
-        }
-
-    if(a>c||b>d)
-        return {
-            A: {type: 'val', value: 1},
-            B: {type: 'val', value: 1},
-        };
-
+    if(a<c&&b<d) return {C: options.C.win, D: options.D.win};
+    if(a>c||b>d) return {A: options.A.win, B: options.B.win};
     return {};
 };

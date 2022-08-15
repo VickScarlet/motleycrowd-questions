@@ -1,5 +1,9 @@
 // 题目
 export const question = '第二关：\n人数最多的选项-1分，\n人数最少的选项+1分';
+const meta = {
+    most: -1,
+    least: 1,
+}
 // 选项 -[usually 表示常驻]
 //      -[special 表示特殊，配合 rate 使用万分率]
 export const options = {
@@ -19,13 +23,10 @@ export const judge = ({answer}) => {
     const leastAns = crank.pop();
     if(!mostAns) return {};
     const scores = {};
-    mostAns.forEach(
-        option=>scores[option] = {type: 'val', value: -1}
-    );
+    const addScore = base=>opt=>scores[opt]=base;
+    mostAns.forEach(addScore(meta.most));
 
     if(!leastAns) return scores;
-    leastAns.forEach(
-        option=>scores[option] = {type: 'val', value: 1}
-    );
+    leastAns.forEach(addScore(meta.least));
     return scores;
 };

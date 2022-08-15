@@ -14,22 +14,16 @@ export const least = 0;
 
 // 判断规则
 export const judge = ({answer}) => {
-    const scores = {
-        A: {type: 'val', value: options.A.score},
-    };
-
-    if(answer.count('A')>answer.count('B'))
-        scores.B = {type: 'val', value: options.B.score};
-
+    const scores = {A: options.A.score};
     const crank = answer.crank();
     const most = new Set(crank[0]);
 
-    if(most.has('A'))
-        scores.C = {type: 'val', value: options.C.score};
-    if(most.has('B'))
-        scores.D = {type: 'val', value: options.D.score};
+    if(answer.count('A')>answer.count('B'))
+        scores.B = options.B.score;
+    if(most.has('A')) scores.C = options.C.score;
+    if(most.has('B')) scores.D = options.D.score;
     if(most.has('C')||most.has('D'))
-        scores.E = {type: 'val', value: options.E.score};
+        scores.E = options.E.score;
 
     return scores;
 };

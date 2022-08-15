@@ -1,5 +1,8 @@
 // 题目
 export const question = '第四关：\n从1-10中选一个数，离平均数的三分之二最近的人获胜，获得等于所选数的积分。';
+const meta = {
+    pointer: 2/3,
+}
 // 选项 -[usually 表示常驻]
 //      -[special 表示特殊，配合 rate 使用万分率]
 export const options = {
@@ -30,7 +33,7 @@ export const judge = ({answer}) => {
         if(count) numbers[number] = option;
     }
     if(!total) return {};
-    const pointer = (total / users) * (2 / 3);
+    const pointer = (total / users) * meta.pointer;
     const start = Math.round(pointer);
     const double = start - pointer == 0.5?1:0;
 

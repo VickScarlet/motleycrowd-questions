@@ -1,8 +1,8 @@
-export function listRandom(list, cnt = 1, rOthers = false) {
-    if(cnt == 1 && !rOthers) return list[Math.floor(Math.random() * list.length)];
+export function listRandom(list, cnt=null, rOthers = false) {
+    if(cnt === null) return list[Math.floor(Math.random() * list.length)];
     const set = new Set(list);
     list = [...set];
-    if(cnt >= list.size) return list;
+    if(cnt >= list.length) return list;
     const picked = new Set();
     while(picked.size < cnt) {
         const val = list[Math.floor(Math.random() * list.length)];

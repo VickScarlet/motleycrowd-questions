@@ -1,14 +1,18 @@
 // 题目
 export const question = '第二关：\n人数最多的选项-2分，\n人数最少的选项+2分。';
+const meta = {
+    most: -2,
+    least: 2,
+}
 // 选项 -[usually 表示常驻]
 //      -[special 表示特殊，配合 rate 使用万分率]
 export const options = {
-    A: {type: 'usually', val: 'A'},
-    B: {type: 'usually', val: 'B（额外+0.5分）'},
-    C: {type: 'usually', val: 'C（额外-0.5分）'},
-    D: {type: 'usually', val: 'D（得失翻倍）'},
-    E: {type: 'special', val: 'E（额外+1分）', rate: 500},
-    F: {type: 'special', val: 'F（没什么特别的，只是比A稀有）', rate: 500},
+    A: {type: 'usually', extra:  0,   multiple: 1, val: 'A'},
+    B: {type: 'usually', extra:  0.5, multiple: 1, val: 'B（额外+0.5分）'},
+    C: {type: 'usually', extra: -0.5, multiple: 1, val: 'C（额外-0.5分）'},
+    D: {type: 'usually', extra:  0,   multiple: 2, val: 'D（得失翻倍）'},
+    E: {type: 'special', extra:  1,   multiple: 1, val: 'E（额外+1分）', rate: 500},
+    F: {type: 'special', extra:  0,   multiple: 1, val: 'F（没什么特别的，只是比A稀有）', rate: 500},
 };
 // 没有选的人的分数
 export const least = -2;
@@ -19,34 +23,15 @@ export const judge = ({answer}) => {
     const mostAns = crank.shift();
     const leastAns = crank.pop();
     const scores = {};
+    const addScore = base=>opt=>{
+        const {extra, multiple} = options[opt];
+        scores[opt]=(base+extra)*multiple;
+    }
+
     if(!mostAns) return scores;
-    mostAns.forEach(option=>{
-        let value;
-        switch(option){
-            case 'F':
-            case 'A': value = -2; break;
-            case 'B': value = -1.5; break;
-            case 'C': value = -2.5; break;
-            case 'D': value = -4; break;
-            case 'E': value = -1; break;
-            default: return;
-        }
-        scores[option] = {type: 'val', value};
-    });
+    mostAns.forEach(addScore(meta.most));
 
     if(!leastAns) return scores;
-    leastAns.forEach(option=>{
-        let value;
-        switch(option){
-            case 'F':
-            case 'A': value = 2; break;
-            case 'B': value = 2.5; break;
-            case 'C': value = 1.5; break;
-            case 'D': value = 4; break;
-            case 'E': value = 3; break;
-            default: return;
-        }
-        scores[option] = {type: 'val', value};
-    });
+    leastAns.forEach(addScore(meta.least));
     return scores;
 };

@@ -15,8 +15,6 @@ export const least = -2;
 // 判断规则
 export const judge = ({answer}) => {
     const scores = {};
-    const set = (opt, value) =>
-        scores[opt] = {type: 'val', value}
     const score = meta.score;
     const state = (a, b)=>{
         // $: 混合 |: 直行 S: 躲避
@@ -28,31 +26,31 @@ export const judge = ({answer}) => {
     switch(A+B) {
         case 'S|': // A躲B直
         case 'S$': // A躲B混
-            set('B', score);
+            options.B = score;
             break;
         case '|S': // A直B躲
         case '$S': // A混B躲
-            set('D', score);
+            options.D = score;
             break;
         case '||': // 双直
-            set('A', score);
-            set('C', score);
+            options.A = score;
+            options.C = score;
             break;
         case '|$': // A直B混
-            set('A', score);
-            set('C', score);
-            set('D', score);
+            options.A = score;
+            options.C = score;
+            options.D = score;
             break;
         case '$|': // A混B直
-            set('A', score);
-            set('B', score);
-            set('C', score);
+            options.A = score;
+            options.B = score;
+            options.C = score;
             break;
         case '$$': // 双混
-            set('A', score);
-            set('B', score);
-            set('C', score);
-            set('D', score);
+            options.A = score;
+            options.B = score;
+            options.C = score;
+            options.D = score;
             break;
     }
     return scores;

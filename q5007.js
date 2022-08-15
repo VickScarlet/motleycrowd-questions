@@ -29,10 +29,7 @@ export const judge = ({answer, picked}) => {
     const scores = {};
     for(const [totalOffer, opt] of rank) {
         if(totalOffer != max) return scores;
-        scores[opt] = {
-            type: 'val',
-            value: (meta.total-max)/answer.count(opt)
-        };
+        scores[opt] = (meta.total-max)/answer.count(opt);
     }
     return scores;
 };
