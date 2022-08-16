@@ -15,7 +15,7 @@ export const least = -1;
 export const judge = ({answer}) => {
     const a = answer.count('A');
     const b = answer.count('B');
-    if(b>a) return {B: options.b.more};
-    if(b<a) return {B: options.b.less};
+    if(b>a) return {B: options.B.more};
+    if(b<a) return {B: options.B.less};
     return {};
 };

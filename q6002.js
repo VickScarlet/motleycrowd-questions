@@ -46,7 +46,7 @@ export const judge = ({answer}) => {
             scores.E = se;
         }
     }
-    if(f && e && scores.E && scores.E.value>options.F.check) {
+    if(f && e && scores.E>options.F.check) {
         delete scores.E;
         scores.F = options.F.score;
     }
@@ -55,21 +55,17 @@ export const judge = ({answer}) => {
         if(a) scores.A = options.A.score + reward;
         if(lb) {
             const pb = new Set(listRandom(answer.users('B'), eb));
-            scores.B = {
-                type: 'val',
-                value: ({uuid})=>pb.has(uuid) ?0 :(options.B.score + reward)
-            };
+            scores.B = ({uuid})=>pb.has(uuid)
+                    ?0 :(options.B.score + reward);
         }
         if(lc) {
             const pc = new Set(listRandom(answer.users('C'), ec));
-            scores.C = {
-                type: 'val',
-                value: ({uuid})=>pc.has(uuid) ?0 :(options.C.score + reward)
-            };
+            scores.C = ({uuid})=>pc.has(uuid)
+                    ?0 :(options.C.score + reward);
         }
     }
     if(g && g<d) {
-        const take = d * scores.D.value;
+        const take = d * scores.D;
         delete scores.D;
         const reward = take / (a + lb + lc + g);
         scores.G = reward;
