@@ -10,4 +10,12 @@ export const options = {
 export const least = -0.5;
 
 // 判断规则
-export const judge = ({answer}) => ({});
+export const judge = ({score}) => {
+    const tops = new Set(score.crank()[0]||[]);
+    return {
+        A: ({uuid})=>tops.has(uuid)
+            ?{ type: 'set', value: 0 }
+            :0,
+        B: -0.5,
+    };
+};

@@ -1,4 +1,4 @@
-import { fingerGuessing } from "./functions.js";
+import { mutipleForEach, fingerGuessing } from "./functions.js";
 // 题目
 export const question = '第三关：\n石头剪刀布，连续玩两次。人数最多和最少的两项PK，\n每赢一次+2分，每输一次-2分。';
 const meta = {
