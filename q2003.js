@@ -11,16 +11,18 @@ export const options = {
 };
 // 没有选的人的分数
 export const least = -2;
+// 超时
+export const timeout = 60 * 1000; // 60 seconds
 
 // 判断规则
 export const judge = ({answer}) => answer.most('A') ? {
-    A: options.A.score,
-    B: options.B.score,
+    A: options.B.score,
+    B: options.A.score,
     C: options.C.score,
     D: options.D.score,
 } : {
-    A: options.B.score,
-    B: options.A.score,
+    A: options.A.score,
+    B: options.B.score,
     C: options.C.score,
     D: options.D.score,
 };

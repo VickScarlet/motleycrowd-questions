@@ -18,6 +18,8 @@ export const options = {
 };
 // 没有选的人的分数
 export const least = -2;
+// 超时
+export const timeout = 30 * 1000; // 30 seconds
 
 // 判断规则
 export const judge = ({answer}) => {
