@@ -17,7 +17,7 @@ export const judge = ({answer}) => {
     const scores = {};
     const addScore = (option, score)=>{
         if(!scores[option]) {
-            scores[option] = 0;
+            scores[option] = score;
             return;
         }
         scores[option] += score;
@@ -28,6 +28,11 @@ export const judge = ({answer}) => {
         for(const o in s)
             if(s[o]) addScore(o, s[o]);
     });
+    for(const o in scores) {
+        const c = answer.count(o);
+        if(!c) delete scores[o];
+        else scores[o] = scores[o] / c;
+    }
 
     return scores;
 };
