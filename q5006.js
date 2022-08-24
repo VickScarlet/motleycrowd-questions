@@ -32,8 +32,9 @@ export const judge = ({answer}) => {
         const need = take*count;
         if(need >= left) {
             scores[opt] = left/count;
-            return scores;
+            break;
         }
+        left -= need;
         scores[opt] = take;
     }
     return scores;
