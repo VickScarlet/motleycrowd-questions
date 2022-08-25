@@ -21,11 +21,14 @@ export const least = -2;
 export const timeout = 30 * 1000; // 30 seconds
 
 // 判断规则
-export const judge = ({answer}) => {
+export const judge = ({answer, picked}) => {
     const crank = answer.crank();
     const mostAns = crank.shift();
     const leastAns = crank.pop();
     const scores = {};
+    [...picked].forEach(opt => {
+        scores[opt] = options[opt].extra;
+    });
     const addScore = base=>opt=>{
         const {extra, reward} = options[opt];
         scores[opt]= base * reward + extra;
