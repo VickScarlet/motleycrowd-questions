@@ -52,12 +52,12 @@ export const judge = ({answer}) => {
             && firstOpt && secondOpt) {
             // 如果是整数，则无优先
             return {
-                [firstOpt]: {type: 'val', value: first},
-                [secondOpt]: {type: 'val', value: second}
+                [firstOpt]: first,
+                [secondOpt]: second,
             };
         }
-        if(firstOpt) return {[firstOpt]: {type: 'val', value: first}};
-        if(secondOpt) return {[secondOpt]: {type: 'val', value: second}};
+        if(firstOpt) return {[firstOpt]: first};
+        if(secondOpt) return {[secondOpt]: second};
         step++;
     }
 };

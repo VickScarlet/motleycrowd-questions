@@ -40,7 +40,7 @@ export const judge = ({answer}) => {
 
     const scores = {};
     if(a[0]==1||b[0]==1) {
-        scores.G = {type: 'val', value: meta.bo}
+        scores.G = meta.bo
     }
 
     const addScore = (isQi, score)=>Array
