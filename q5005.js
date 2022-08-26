@@ -28,31 +28,31 @@ export const judge = ({answer}) => {
     switch(A+B) {
         case 'S|': // A躲B直
         case 'S$': // A躲B混
-            options.B = score;
+            scores.B = score;
             break;
         case '|S': // A直B躲
         case '$S': // A混B躲
-            options.D = score;
+            scores.D = score;
             break;
         case '||': // 双直
-            options.A = score;
-            options.C = score;
+            scores.A = score;
+            scores.C = score;
             break;
         case '|$': // A直B混
-            options.A = score;
-            options.C = score;
-            options.D = score;
+            scores.A = score;
+            scores.C = score;
+            scores.D = score;
             break;
         case '$|': // A混B直
-            options.A = score;
-            options.B = score;
-            options.C = score;
+            scores.A = score;
+            scores.B = score;
+            scores.C = score;
             break;
         case '$$': // 双混
-            options.A = score;
-            options.B = score;
-            options.C = score;
-            options.D = score;
+            scores.A = score;
+            scores.B = score;
+            scores.C = score;
+            scores.D = score;
             break;
     }
     return scores;
