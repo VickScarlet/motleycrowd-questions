@@ -22,7 +22,7 @@ export const timeout = 60 * 1000; // 60 seconds
 export const judge = ({answer, picked}) => {
     const sum = [...picked]
         .reduce((s, o)=>s+answer.count(o) * options[o].invest, 0)
-    const reward = sum > meta.threshold ? meta.reward : 0;
+    const reward = sum >= meta.threshold ? meta.reward : 0;
     return {
         B: reward - options.B.invest,
         C: reward - options.C.invest,

@@ -22,7 +22,7 @@ export const judge = ({answer}) => {
     const sa = options.A.score;
     const sc = options.C.score;
     const sd = options.D.score;
-    return b>c ? {
+    return (!a || b>c) ? {
         B: sa * a / b,
         C: sc,
         D: sd,

@@ -1,4 +1,4 @@
-import { between } from "./functions.js";
+import { between } from "../functions.js";
 // 题目
 export const question = '第四关：\n请选择一处聚集点，人数超过上限的会被传染，-2分。';
 // 选项 -[usually 表示常驻]

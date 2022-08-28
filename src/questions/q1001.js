@@ -1,4 +1,4 @@
-import { listRandom } from "./functions.js";
+import { listRandom } from "../functions.js";
 // 题目
 export const question = '第一关：\n请任意选择一项。';
 // 选项 -[usually 表示常驻]

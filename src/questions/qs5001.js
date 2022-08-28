@@ -1,4 +1,4 @@
-import { listRandom } from "./functions.js";
+import { listRandom } from "../functions.js";
 // 题目
 export const question = '第五关：\n现有1张传说卡（+1分），3张稀有卡（+0.5分），不限数量的普通卡（0分）。\n限量的卡牌会随机分配给来抢的人，但没抢到卡的人-2分。你的选择是？';
 const meta = {

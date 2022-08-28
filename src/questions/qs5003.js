@@ -1,4 +1,4 @@
-import { between } from "./functions.js";
+import { between } from "../functions.js";
 // 题目
 export const question = '第五关：\n如果ABC三项任务都成功了，则选这三项的人平分15分';
 const meta = {

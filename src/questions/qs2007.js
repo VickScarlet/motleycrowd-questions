@@ -1,4 +1,4 @@
-import { mutipleForEach, fingerGuessing } from "./functions.js";
+import { mutipleForEach, fingerGuessing } from "../functions.js";
 // 题目
 export const question = '第二关：\n石头剪刀布，人数最多和最少的两项PK，\n赢的+2分，输的-2分。';
 const meta = {

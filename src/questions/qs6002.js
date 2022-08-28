@@ -1,4 +1,4 @@
-import { listRandom } from "./functions.js";
+import { listRandom } from "../functions.js";
 // 题目
 export const question = '第六关：\n请选择一项身份。';
 // 选项 -[usually 表示常驻]

@@ -132,3 +132,19 @@ export function between(x, a, b, andA=true, andB=true) {
 export function sum(...args) {
     return args.flat().reduce((a, b) => a + b, 0);
 }
+
+export function crank(map) {
+    const r = [];
+    Array.from(map.entries())
+        .sort(([_a, a], [_b, b])=>b-a)
+        .forEach(([o, c], i, l)=>{
+            if(!i)
+                return r.push([o]);
+
+            if(l[i-1][1] == c)
+                r.at(-1).push(o);
+            else
+                r.push([o]);
+        });
+    return r;
+}
