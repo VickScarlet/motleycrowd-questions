@@ -12,7 +12,6 @@ export class Question {
     }
 
     constructor(id, picked) {
-        console.debug(id, picked);
         const { question, options, least, timeout, judge } = metas[id];
         this.#id = id;
         this.#question = question;
