@@ -86,6 +86,11 @@ export default class Score {
                 score = this.#set(uuid, alter);
                 break;
         }
-        return score || 0;
+        return score;
+    }
+
+    least(uuid, least) {
+        this.#buffit(uuid, 0);
+        return this.#alert(uuid, least);
     }
 }

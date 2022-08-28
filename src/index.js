@@ -134,7 +134,7 @@ export class Questions {
                 if(!answers[uuid]) answers[uuid] = data;
                 if(!question.has(uuid))
                     return data.push(
-                        score.addition(uuid, least)
+                        score.least(uuid, least)
                     );
 
                 const ans = question.get(uuid);
