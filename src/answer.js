@@ -75,4 +75,12 @@ export default class Answer {
     }
 
     crank() { return crank(this.#counter); }
+    users(answer) {
+        const users = [];
+        this.#map.forEach((ans, uuid) => {
+            if(ans == answer)
+                users.push(uuid);
+        });
+        return users;
+    }
 }
