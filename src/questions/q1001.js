@@ -25,7 +25,7 @@ export const timeout = 60 * 1000; // 60 seconds
 export const judge = ({answer}) => {
     const scores = {
         A: options.A.score,
-        F: {type: 'fn', value: ()=>listRandom(options.F.score)},
+        F: ()=>listRandom(options.F.score),
         G: options.G.score,
         J: options.J.score,
     };
