@@ -1,3 +1,19 @@
+/**
+ * @typedef {Object<string, any>} option
+ * @typedef {{[option: string]: option}} options
+ * @typedef {'value'|'buff'|'set'} additionType
+ * @typedef { number
+ *      | { type: additionType, value: addition }
+ *      | ({uuid: string}) => addition
+ * } addition
+ * @callback judge
+ * @param {{
+ *      picked: string
+ *      answer: Answer
+ *      score: Score
+ * }} params
+ * @return {{[option: string]: addition}}
+ */
 import * as metas from './questions/meta.js';
 import { pool as pools } from './questions/pool.js';
 import { listRandom } from './functions.js'
@@ -39,10 +55,15 @@ export class Question {
         this.#answers = new Answer({options: picked});
     }
 
+    /** @private @type {string} */
     #id;
+    /** @private @type {string} */
     #question;
+    /** @private @type {object} */
     #options;
+    /** @private @type {string} */
     #picked;
+    /** @private @type {judge} */
     #judge;
     #least;
     #timeout;
@@ -57,6 +78,17 @@ export class Question {
     get answers() {return this.#answers;}
     get timeout() {return this.#timeout;}
     get picked() {return this.#picked;}
+
+    /**
+     * @readonly
+     * @typedef {import('./answer').minify} minify
+     * @return {[id: string, picked: string, minify: minify]}
+     */
+    get meta() {return [
+        this.#id,
+        this.#picked,
+        this.#answers.minify
+    ];}
 
     option(option) {
         return this.#options[option];
@@ -83,7 +115,17 @@ export class Question {
     }
 }
 
+/**
+ * @typedef {{[uid: string]: [
+ *      total: number,
+ *      subs: (number | [alter: number, answer: string])[]
+ * ]}} settlement
+ * @typedef {[id: string, picked: string][]} picks
+ */
 export class Questions {
+    /**
+     * @param {number} pool
+     */
     static get(pool) {
         const p = pools.get(pool);
         if(!p) return null;
@@ -92,10 +134,17 @@ export class Questions {
         );
     }
 
+    /**
+     * @param {picks} questions
+     */
     static pick(questions) {
         return new Questions({questions});
     }
 
+    /**
+     * @param {object} params
+     * @param {picks}  params.questions
+     */
     constructor({questions}) {
         this.#questions = questions.map(
             ([id, picked])=>new Question(id, picked)
@@ -103,13 +152,20 @@ export class Questions {
     }
 
     #index = -1;
+    /** @private @type {Question[]} */
     #questions;
 
+    /** @readonly @type {Question[]} */
     get questions() {return Array.from(this.#questions);}
     get size() {return this.#questions.length;}
     get end() {return this.#questions.length <= this.#index;}
     get idx() {return this.#index;}
     get question() {return this.#questions[this.#index];}
+    /** @readonly */
+    get meta() {
+        return this.#questions
+            .map(({meta})=>meta);
+    }
 
     at(index) {return this.#questions.at(index);}
 
@@ -119,22 +175,22 @@ export class Questions {
         return !this.end;
     }
 
+    /**
+     * @param {string[]} users
+     * @return {settlement}
+     */
     settlement(users) {
-        const questions = [];
         const score = new Score(users);
         const answers = {};
 
         for(const question of this.#questions) {
-            const {id, picked, least} = question;
-            questions.push([id, picked]);
-
             const scores = question.judge(score);
             users.forEach(uuid=>{
-                const data = answers[uuid] || [];
-                if(!answers[uuid]) answers[uuid] = data;
+                const data = answers[uuid]
+                        || ( answers[uuid] = [] );
                 if(!question.has(uuid))
                     return data.push(
-                        score.least(uuid, least)
+                        score.least(uuid, question.least)
                     );
 
                 const ans = question.get(uuid);
@@ -152,9 +208,6 @@ export class Questions {
                 answers[uuid],
             ];
 
-        return {
-            questions,
-            scores: usersScores,
-        }
+        return usersScores;
     }
 }

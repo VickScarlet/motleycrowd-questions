@@ -1,4 +1,7 @@
 import { crank } from './functions.js';
+/**
+ * @typedef {{[option: string]: number}} minify
+ */
 export default class Answer {
     constructor({options}) {
         this.#options = new Set([...options]);
@@ -13,6 +16,15 @@ export default class Answer {
     get size() { return this.#map.size; }
     get counter() { return new Map(this.#counter); }
     get map() {return new Map(this.#map);}
+    /** @readonly @type {minify} */
+    get minify() {
+        const counter = {};
+        this.#counter.forEach((cnt, opt)=>{
+            if(!cnt) return;
+            counter[opt] = cnt;
+        });
+        return counter;
+    }
 
     answer(uuid, answer) {
         if(this.#map.has(uuid) || !this.#options.has(answer))
