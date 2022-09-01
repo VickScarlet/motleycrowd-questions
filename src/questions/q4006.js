@@ -16,7 +16,11 @@ export const least = 0;
 // 超时
 export const timeout = 60 * 1000; // 60 seconds
 
-// 判断规则
+//============================================================
+//
+//============================================================
+
+/** @type {import('../index').judge} 判断规则 */
 export const judge = ({answer, picked}) => {
     const scores = {};
     [...picked].forEach(opt=> {

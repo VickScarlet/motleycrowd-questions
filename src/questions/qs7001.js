@@ -11,7 +11,11 @@ export const least = -0.5;
 // 超时
 export const timeout = 30 * 1000; // 30 seconds
 
-// 判断规则
+//============================================================
+//
+//============================================================
+
+/** @type {import('../index').judge} 判断规则 */
 export const judge = ({score}) => {
     const tops = new Set(score.crank()[0]||[]);
     return {

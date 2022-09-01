@@ -1,3 +1,6 @@
+/**
+ * @type {Map<number, string[][]>}
+ */
 export const pool = new Map();
 
 pool.set(10, [

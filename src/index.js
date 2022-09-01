@@ -1,5 +1,8 @@
 /**
- * @typedef {Object<string, any>} option
+ * @typedef {Object} option
+ * @property {'usually'|'special'} type
+ * @property {string} val
+ * @property {number=} rate
  * @typedef {{[option: string]: option}} options
  * @typedef {'value'|'buff'|'set'} additionType
  * @typedef { number
@@ -22,11 +25,23 @@ import Answer from "./answer.js";
 import Score from "./score.js";
 
 export class Question {
+    /**
+     * @static
+     * @param {string} id
+     * @param {string} picked
+     * @returns {Question}
+     */
     static get(id, picked) {
         if(!metas[id]) return null;
         return new Question(id, picked);
     }
 
+    /**
+     * @constructor
+     * @param {string} id
+     * @param {string} picked
+     * @returns {Question}
+     */
     constructor(id, picked) {
         const { question, options, least, timeout, judge } = metas[id];
         this.#id = id;
@@ -59,27 +74,40 @@ export class Question {
     #id;
     /** @private @type {string} */
     #question;
-    /** @private @type {object} */
+    /** @private @type {options} */
     #options;
     /** @private @type {string} */
     #picked;
     /** @private @type {judge} */
     #judge;
+    /** @private @type {number} */
     #least;
+    /** @private @type {number} */
     #timeout;
+    /** @private @type {Answer} */
     #answers;
 
+    /** @readonly 题号 */
     get id() {return this.#id;}
+    /** @readonly 题目 */
     get question() {return this.#question;}
+    /** @readonly 选项集 */
     get options() {return this.#options;}
+    /** @readonly 最低分 */
     get least() {return this.#least;}
+    /** @readonly 选项回答统计 */
     get counter() {return this.#answers.counter;}
+    /** @readonly 回答人数 */
     get size() {return this.#answers.size;}
+    /** @readonly */
     get answers() {return this.#answers;}
+    /** @readonly 超时 */
     get timeout() {return this.#timeout;}
+    /** @readonly 可选选项 */
     get picked() {return this.#picked;}
 
     /**
+     * 元数据
      * @readonly
      * @typedef {import('./answer').minify} minify
      * @return {[id: string, picked: string, minify: minify]}
@@ -90,22 +118,43 @@ export class Question {
         this.#answers.minify
     ];}
 
+    /**
+     * 选项
+     * @param {string} option
+     */
     option(option) {
         return this.#options[option];
     }
 
+    /**
+     * 回答
+     * @param {string} uuid
+     * @param {string} answer
+     */
     answer(uuid, answer) {
         return this.#answers.answer(uuid, answer);
     }
 
+    /**
+     * 是否回答
+     * @param {string} uuid
+     */
     has(uuid) {
         return this.#answers.has(uuid);
     }
 
+    /**
+     * 获取回答
+     * @param {string} uuid
+     */
     get(uuid) {
         return this.#answers.get(uuid);
     }
 
+    /**
+     * 评判
+     * @param {Score} score
+     */
     judge(score) {
         const answer = this.#answers;
         const picked = this.#picked;
@@ -155,20 +204,32 @@ export class Questions {
     /** @private @type {Question[]} */
     #questions;
 
-    /** @readonly @type {Question[]} */
+    /** @readonly 题目列表 */
     get questions() {return Array.from(this.#questions);}
+    /** @readonly 题目数 */
     get size() {return this.#questions.length;}
+    /** @readonly 是否结束 */
     get end() {return this.#questions.length <= this.#index;}
+    /** @readonly 当前题目序号 */
     get idx() {return this.#index;}
+    /** @readonly 当前题目 */
     get question() {return this.#questions[this.#index];}
-    /** @readonly */
+    /** @readonly 元数据 */
     get meta() {
         return this.#questions
             .map(({meta})=>meta);
     }
 
+    /**
+     * 根据序号获取题目
+     * @param {number} index
+     */
     at(index) {return this.#questions.at(index);}
 
+    /**
+     * 切下一题
+     * @returns {boolean} 是否有下一题
+     */
     next() {
         if(this.end) return false;
         this.#index++;
@@ -176,6 +237,7 @@ export class Questions {
     }
 
     /**
+     * 结算
      * @param {string[]} users
      * @return {settlement}
      */

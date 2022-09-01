@@ -129,10 +129,19 @@ export function between(x, a, b, andA=true, andB=true) {
     return !(x < a || x > b || !andA && x == a || !andB && x == b);
 }
 
+/**
+ * 求和
+ * @param  {...number|number[]} args
+ * @returns {number}
+ */
 export function sum(...args) {
     return args.flat().reduce((a, b) => a + b, 0);
 }
 
+/**
+ * @param {Map<any, number>} map
+ * @returns {any[][]}
+ */
 export function crank(map) {
     const r = [];
     Array.from(map.entries())

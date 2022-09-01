@@ -13,7 +13,11 @@ export const least = -3;
 // 超时
 export const timeout = 30 * 1000; // 30 seconds
 
-// 判断规则
+//============================================================
+//
+//============================================================
+
+/** @type {import('../index').judge} 判断规则 */
 export const judge = ({answer}) => answer.count('C')>=1? {
     A: options.A.betray,
     B: options.B.betray,

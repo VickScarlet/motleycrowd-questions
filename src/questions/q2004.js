@@ -17,7 +17,11 @@ export const least = -2;
 // 超时
 export const timeout = 60 * 1000; // 60 seconds
 
-// 判断规则
+//============================================================
+//
+//============================================================
+
+/** @type {import('../index').judge} 判断规则 */
 export const judge = ({answer}) => {
     const a = (answer.count('A') + options.A.extra) * options.A.multiple;
     const b = (answer.count('B') + options.B.extra) * options.B.multiple;
