@@ -17,7 +17,7 @@ export const timeout = 60 * 1000; // 60 seconds
 //
 //============================================================
 
-/** @type {import('../index').judge} 判断规则 */
+/** @type {import('..').judge} 判断规则 */
 export const judge = ({answer}) => answer.count('C')>=3? {
     A: options.A.betray,
     B: options.B.betray,

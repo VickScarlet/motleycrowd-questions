@@ -31,7 +31,7 @@ export const timeout = 60 * 1000; // 60 seconds
 //
 //============================================================
 
-/** @type {import('../index').judge} 判断规则 */
+/** @type {import('..').judge} 判断规则 */
 export const judge = ({answer}) => {
     // 1: 上等马 2: 中等马 3: 下等马
     const sequence = (l1, l2, l3)=>

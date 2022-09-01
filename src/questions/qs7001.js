@@ -15,7 +15,7 @@ export const timeout = 30 * 1000; // 30 seconds
 //
 //============================================================
 
-/** @type {import('../index').judge} 判断规则 */
+/** @type {import('..').judge} 判断规则 */
 export const judge = ({score}) => {
     const tops = new Set(score.crank()[0]||[]);
     return {

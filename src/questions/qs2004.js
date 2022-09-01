@@ -21,7 +21,7 @@ export const timeout = 30 * 1000; // 30 seconds
 //
 //============================================================
 
-/** @type {import('../index').judge} 判断规则 */
+/** @type {import('..').judge} 判断规则 */
 export const judge = ({answer}) => {
     const a = (answer.count('A') + options.A.extra) * options.A.multiple;
     const b = (answer.count('B') + options.B.extra) * options.B.multiple;
