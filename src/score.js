@@ -16,9 +16,24 @@ export default class Score {
     #map = new Map();
     /** @private @type {Map<string, [times: number, buff: number][]>} */
     #buff = new Map();
+    #rankings = new Map();
 
     /** @readonly 分数map */
     get map() {return new Map(this.#map);}
+
+    rankit() {
+        let lastRank = 1;
+        this.crank().forEach(row=>{
+            row.forEach(
+                uuid=>this.#rankings.set(uuid, lastRank)
+            );
+            lastRank += row.length;
+        });
+    }
+
+    ranking(uuid) {
+        return this.#rankings.get(uuid);
+    }
 
     crank() { return crank(this.#map); }
 

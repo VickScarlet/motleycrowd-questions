@@ -263,11 +263,14 @@ export class Questions {
             });
         }
 
+        score.rankit();
+
         const usersScores = {};
         for(const uuid of users)
             usersScores[uuid] = [
                 score.get(uuid),
                 answers[uuid],
+                score.ranking(uuid),
             ];
 
         return usersScores;
