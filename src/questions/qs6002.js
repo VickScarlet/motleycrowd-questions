@@ -8,7 +8,7 @@ export const options = {
     A: {type: 'usually', score: 1, surplus: 2, val: '打工人（+1分，剩余价值+2）'},
     B: {type: 'usually', score: 2, surplus: 4, val: '卷王（+2分，剩余价值+4)'},
     C: {type: 'usually',                       val: '资本家（平分所有剩余价值转化为积分）'},
-    D: {type: 'usually', score: 1,             val: '贪官（+1分，如果比资本家少，则夺走资本家一半积分）'},
+    D: {type: 'usually',                       val: '贪官（如果比资本家少，则夺走资本家一半积分）'},
     E: {type: 'special', score: 3, check: 1,   val: '反腐队长（如果贪官收入大于1，则使贪官收入清零，并且你+3分）', rate: 500},
 };
 // 没有选的人的分数
@@ -35,14 +35,9 @@ export const judge = ({answer}) => {
     if(a) scores.A = options.A.score;
     if(b) scores.B = options.B.score;
     if(c) scores.C = surplus/c;
-    if(d) {
-        const sd = options.D.score;
-        if(d<c) {
-            scores.C = surplus/2/c;
-            scores.D = sd + surplus/2/d;
-        } else {
-            scores.D = sd;
-        }
+    if(d && d<c) {
+        scores.C = surplus/2/c;
+        scores.D = surplus/2/d;
     }
     if(e && d && scores.D > options.E.check) {
         delete scores.D;
