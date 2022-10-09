@@ -54,7 +54,7 @@ export default class Score {
      * @param {string} uuid
      * @param {number} value
      */
-    #alert(uuid, value) {
+    #alter(uuid, value) {
         const last = this.get(uuid);
         const score = this.#fix(last + value);
         this.#map.set(uuid, score);
@@ -148,7 +148,7 @@ export default class Score {
         const alter = this.#buffit(uuid, value);
         switch(type) {
             case 'value':
-                return this.#alert(uuid, alter);
+                return this.#alter(uuid, alter);
             case 'buff':
                 return this.#addbuff(uuid, value, times);
             case 'set':
@@ -159,6 +159,6 @@ export default class Score {
 
     least(uuid, least) {
         this.#buffit(uuid, 0);
-        return this.#alert(uuid, least);
+        return this.#alter(uuid, least);
     }
 }
