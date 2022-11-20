@@ -16,7 +16,7 @@ export const options = {
 // 没有选的人的分数
 export const least = 0;
 // 超时
-export const timeout = 60 * 1000; // 60 seconds
+export const timeout = 30 * 1000; // 30 seconds
 
 //============================================================
 //
